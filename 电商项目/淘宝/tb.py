@@ -40,8 +40,8 @@ def get_and_save_to_mongo():
     # 显形等待登录界面的出现
     WebDriverWait(web,5).until(ec.element_to_be_clickable((By.XPATH,'//*[@id="fm-login-id"]')))
     # 模拟登录
-    web.find_element(By.XPATH,'//*[@id="fm-login-id"]').send_keys('15916142395')
-    web.find_element(By.XPATH,'//*[@id="fm-login-password"]').send_keys('a19941030')
+    web.find_element(By.XPATH,'//*[@id="fm-login-id"]').send_keys('你的淘宝账号')
+    web.find_element(By.XPATH,'//*[@id="fm-login-password"]').send_keys('密码')
     web.find_element(By.XPATH,'//*[@id="login-form"]/div[4]/button').click()
     # 显式等待爬取页面加载完毕
     WebDriverWait(web,30).until(ec.element_to_be_clickable((By.XPATH,'//*[@id="J_relative"]/div[1]/div/div[2]/ul/li[3]/a/span')))
