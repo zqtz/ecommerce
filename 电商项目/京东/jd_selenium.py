@@ -28,7 +28,7 @@ def get_save_goods():
                 join_name = ''.join(name)
                 link = 'http:'+li_list.find_element(By.CSS_SELECTOR,'.p-img a').get_attribute('href')
                 price = li_list.find_element(By.CSS_SELECTOR,'.p-price i').text
-                shop = li_list.find_element(By.CSS_SELECTOR,'.p-shopnum a').text
+                shop = li_list.find_element(By.CSS_SELECTOR,'.J_im_icon a').text
                 comment = li_list.find_element(By.CSS_SELECTOR,'.p-commit a').text
                 data = {
                     '商品名称':name,
