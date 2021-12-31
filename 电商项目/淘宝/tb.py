@@ -9,6 +9,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 import setting
 from selenium.common import exceptions as ex
 import pandas as pd
+import setting
 
 
 # window.navigator.webdriver如何设置为undefined
@@ -40,8 +41,8 @@ def get_good_detail(url):
     # 显形等待登录界面的出现
     WebDriverWait(web,5).until(ec.element_to_be_clickable((By.XPATH,'//*[@id="fm-login-id"]')))
     # 模拟登录
-    web.find_element(By.XPATH,'//*[@id="fm-login-id"]').send_keys('15916142395')
-    web.find_element(By.XPATH,'//*[@id="fm-login-password"]').send_keys('a19941030')
+    web.find_element(By.XPATH,'//*[@id="fm-login-id"]').send_keys('你的淘宝账号')
+    web.find_element(By.XPATH,'//*[@id="fm-login-password"]').send_keys('你的密码')
     web.find_element(By.XPATH,'//*[@id="login-form"]/div[4]/button').click()
     time.sleep(3)
     if '休息会呗，坐下来喝口水' in web.page_source:
@@ -97,7 +98,7 @@ def get_good_detail(url):
         except ex.StaleElementReferenceException:
             continue
         # 爬取完100页即停止
-        if int(page) == 2:
+        if int(page) == 1:
             web.quit()
             break
         # 点击下一页
@@ -107,7 +108,7 @@ def get_good_detail(url):
         page += 1
 
 def save_to_mongo(good_data,good_name):
-    client = MongoClient(host='localhost',port=27017)
+    client = MongoClient(host=setting.host,port=setting.port)
     db = client['淘宝']
     collections = db[good_name]
     collections.insert(good_data)
