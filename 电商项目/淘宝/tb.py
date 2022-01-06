@@ -98,7 +98,7 @@ def get_good_detail(url):
         except ex.StaleElementReferenceException:
             continue
         # 爬取完100页即停止
-        if int(page) == 1:
+        if int(page) == 100:
             web.quit()
             break
         # 点击下一页
